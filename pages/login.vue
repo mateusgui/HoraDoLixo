@@ -31,6 +31,9 @@
         <button type="submit" class="login-button">Entrar</button>
 
         <div class="links-container">
+
+          <!-- TODO: Finalizar páginas '/esqueci-senha' e '/cadastro' -->
+
           <NuxtLink to="/esqueci-senha">Esqueci minha senha</NuxtLink>
           <p>Não tem uma conta? <NuxtLink to="/cadastro">Cadastre-se</NuxtLink></p>
         </div>
@@ -41,38 +44,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-// 'ref' cria uma variável reativa. Qualquer mudança nela atualizará a interface.
-const email = ref('');
-const password = ref('');
-
-// Função que será chamada quando o formulário for enviado
-const handleLogin = () => {
-  // Por enquanto, apenas mostraremos os dados no console do navegador.
-  // Aqui entraria a lógica para enviar os dados para o back-end.
-  console.log('Tentativa de login com:');
-  console.log('Email:', email.value);
-  console.log('Senha:', password.value);
-  
-  // Exemplo de como você faria a chamada para a API do seu back-end no futuro:
-  // const { data, error } = await useFetch('/api/login', {
-  //   method: 'POST',
-  //   body: { email: email.value, password: password.value }
-  // });
-  
-  // if (error.value) {
-  //   alert('Erro no login!');
-  // } else {
-  //   alert('Login bem-sucedido!');
-  //   // Redirecionar para o painel principal
-  //   // navigateTo('/dashboard');
-  // }
-};
 </script>
 
 <style scoped>
-/* Estilos específicos para esta página. 'scoped' significa que eles não afetarão outros componentes. */
+/* Estilos Locais */
 .login-page-container {
   display: flex;
   justify-content: center;
