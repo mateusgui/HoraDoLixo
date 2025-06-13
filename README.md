@@ -37,7 +37,7 @@ Antes de começar, você vai precisar ter as seguintes ferramentas instaladas em
 
 1.  Clone o repositório para a sua máquina local:
     ```bash
-    git clone [https://github.com/seu-usuario/nome-do-repositorio.git](https://github.com/seu-usuario/nome-do-repositorio.git)
+    https://github.com/mateusgui/HoraDoLixo
     ```
 
 2.  Navegue até o diretório do projeto:
