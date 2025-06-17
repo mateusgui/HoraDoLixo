@@ -1,5 +1,11 @@
 # Hora do Lixo - Plataforma Informativa de Coleta
 
+## Deploy da Aplicação 🚀
+
+Acesse a versão de desenvolvimento do projeto através do link abaixo:
+
+** [https://hora-do-lixo.vercel.app/](https://hora-do-lixo.vercel.app/)**
+
 > Otimizando a Comunicação da Coleta de Lixo Porta a Porta em Campo Grande, MS
 
 Este repositório contém o código-fonte do projeto de extensão "Hora do Lixo", desenvolvido no contexto da disciplina de Projeto Integrador do curso de Tecnologia da Informação. O objetivo é criar uma ferramenta digital para solucionar a comunicação deficiente sobre os horários da coleta de lixo em Campo Grande, MS, fornecendo aos moradores informações claras e alertas personalizáveis.
