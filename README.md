@@ -4,7 +4,7 @@
 
 Acesse a versão de desenvolvimento do projeto através do link abaixo:
 
-** [https://hora-do-lixo.vercel.app/](https://hora-do-lixo.vercel.app/)**
+*[https://hora-do-lixo.vercel.app/](https://hora-do-lixo.vercel.app/)*
 
 > Otimizando a Comunicação da Coleta de Lixo Porta a Porta em Campo Grande, MS
 
