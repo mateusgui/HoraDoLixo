@@ -4,7 +4,6 @@
 
       <div class="login-branding">
         <img src="/img/LogoHoraDoLixo.png" alt="Logo Hora do Lixo" class="branding-logo">
-        
         <p class="branding-description">
           Faça seu cadastro, consulte os horários e receba alertas para coletas do lixo no seu bairro.
         </p>
