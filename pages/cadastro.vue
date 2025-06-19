@@ -55,7 +55,7 @@
           </div>
         </fieldset>
         
-        <button type="submit" class="form-button">Cadastrar</button>
+        <button type="submit" class="btn-primary">Cadastrar</button>
 
         <div class="links-container">
           <p>Já tem uma conta? <NuxtLink to="/login">Faça o login</NuxtLink></p>

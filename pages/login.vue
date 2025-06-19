@@ -1,41 +1,50 @@
 <template>
   <div class="login-page-container">
-    <div class="login-form-container">
-      
-      <img src="/img/LogoHoraDoLixo.png" alt="Logo Hora do Lixo" class="login-logo">
+    <div class="login-card">
 
-      <form @submit.prevent="handleLogin">
+      <div class="login-branding">
+        <img src="/img/LogoHoraDoLixo.png" alt="Logo Hora do Lixo" class="branding-logo">
         
-        <div class="input-group">
-          <label for="email">E-mail</label>
-          <input 
-            type="email" 
-            id="email" 
-            v-model="email" 
-            placeholder="seuemail@exemplo.com" 
-            required
-          >
-        </div>
+        <p class="branding-description">
+          Faça seu cadastro, consulte os horários e receba alertas para coletas do lixo no seu bairro.
+        </p>
+      </div>
 
-        <div class="input-group">
-          <label for="senha">Senha</label>
-          <input 
-            type="password" 
-            id="senha" 
-            v-model="password" 
-            placeholder="Sua senha" 
-            required
-          >
-        </div>
+      <div class="login-form-section">
+        <form @submit.prevent="handleLogin">
+          <h3>Entrar na sua conta</h3>
+          
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <input 
+              type="email" 
+              id="email" 
+              v-model="email" 
+              placeholder="seuemail@exemplo.com" 
+              required
+            >
+          </div>
 
-        <button type="submit" class="login-button">Entrar</button>
+          <div class="input-group">
+            <label for="senha">Senha</label>
+            <input 
+              type="password" 
+              id="senha" 
+              v-model="password" 
+              placeholder="Sua senha" 
+              required
+            >
+          </div>
 
-        <div class="links-container">
-          <NuxtLink to="/esqueci-senha">Esqueci minha senha</NuxtLink>
-          <p>Não tem uma conta? <NuxtLink to="/cadastro">Cadastre-se</NuxtLink></p>
-        </div>
-        
-      </form>
+          <button type="submit" class="btn-primary">Entrar</button>
+
+          <div class="links-container">
+            <NuxtLink to="/esqueci-senha">Esqueci minha senha</NuxtLink>
+            <p>Não tem uma conta? <NuxtLink to="/cadastro">Cadastre-se</NuxtLink></p>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
 </template>
@@ -48,5 +57,6 @@ const password = ref('');
 
 const handleLogin = () => {
   console.log('Tentativa de login com:', { email: email.value, password: password.value });
+  // Lógica de autenticação com o back-end virá aqui
 };
 </script>
