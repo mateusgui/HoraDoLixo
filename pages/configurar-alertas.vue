@@ -64,9 +64,6 @@
 <script setup>
 import { reactive } from 'vue';
 
-// --- SIMULAÇÃO DE DADOS ---
-// No projeto real, esses dados viriam da página anterior ou de uma chamada de API
-// após o usuário digitar o endereço.
 const coletaComum = reactive({
   zona: 'REGIÃO 02',
   dias: 'Segundas, Quartas e Sextas-feiras',
@@ -79,11 +76,6 @@ const coletaSeletiva = reactive({
   horario: '18:00' // Período noturno
 });
 
-// -- ou, para simular um usuário que NÃO é atendido pela seletiva --
-// const coletaSeletiva = reactive({ zona: null, dias: null, horario: null });
-
-
-// Variáveis reativas para as configurações de alerta
 const alertaComum = reactive({
   ativo: false,
   horario: '17:00'
@@ -95,15 +87,11 @@ const alertaSeletiva = reactive({
 });
 
 
-// Função para o botão final
 const finalizarCadastro = () => {
   console.log('Cadastro finalizado com as seguintes preferências de alerta:');
   console.log('Alerta Comum:', alertaComum);
   console.log('Alerta Seletiva:', alertaSeletiva);
   alert('Cadastro e configuração de alertas concluídos! (Verifique o console)');
-  // Aqui você faria a chamada final para a API do back-end para salvar tudo
-  // e depois redirecionaria para o painel principal.
-  // navigateTo('/painel');
 };
 
 </script>
