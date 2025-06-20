@@ -242,12 +242,11 @@ legend {
 }
 
 /* ==========================================================================
-   6. ESTILOS DA PÁGINA DE CONFIGURAÇÃO DE ALERTAS
+   6. ESTILOS DA PÁGINA DE CONFIGURAÇÃO DE ALERTAS (VERSÃO CORRIGIDA)
    ========================================================================== */
 
 .setup-container {
   width: 100%;
-  max-width: 1000px;
   text-align: center;
 }
 
@@ -268,10 +267,15 @@ legend {
   margin: 0 auto;
 }
 
+.main-content-area {
+  max-width: 830px;
+  margin: 0 auto; 
+}
+
 .schedule-cards-container {
   display: flex;
   justify-content: center;
-  gap: 30px; /* Espaço entre os cards */
+  gap: 30px;
   flex-wrap: wrap;
 }
 
@@ -283,7 +287,7 @@ legend {
   flex: 1;
   min-width: 300px;
   max-width: 400px;
-  border-top: 4px solid #3149BC; /* Destaque azul */
+  border-top: 4px solid #3149BC;
 }
 
 .schedule-card.unavailable {
@@ -339,7 +343,6 @@ legend {
   margin-top: 40px;
 }
 
-/* Estilo do Toggle Switch */
 .switch {
   position: relative;
   display: inline-block;
