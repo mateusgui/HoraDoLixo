@@ -6,8 +6,8 @@
         <NuxtLink to="/login">
           <img src="/img/IconeHoraDoLixo.png" alt="Ícone Hora do Lixo" class="header-logo">
         </NuxtLink>
-          <h1>Crie sua Conta</h1>
-          <p>Informe seus dados para começar a usar o serviço.</p>
+        <h1>Crie sua Conta</h1>
+        <p>Informe seus dados para começar a usar o serviço.</p>
       </div>
 
       <div class="register-form-section">
@@ -24,9 +24,15 @@
                   <label for="email">E-mail</label>
                   <input type="email" id="email" v-model="form.email" required>
                 </div>
+                
+                <div class="input-group">
+                  <label for="telefone">Telefone</label>
+                  <input type="tel" id="telefone" v-model="form.telefone" placeholder="(00) 00000-0000" required>
+                </div>
+
                 <div class="input-group">
                   <label for="senha">Senha</label>
-                  <input type="password" id="senha" v-model="form.senha" required>
+                  <input type="password" id="senha" v-model="form.senha" placeholder="Mínimo 8 caracteres" required>
                 </div>
                 <div class="input-group">
                   <label for="confirmar-senha">Confirmar Senha</label>
@@ -60,7 +66,7 @@
               </fieldset>
             </div>
           </div>
-          <button type="submit" class="btn-primary">Cadastrar</button>
+          <button type="submit" class="btn-primary">Continuar cadastro</button>
           <div class="links-container">
             <p>Já tem uma conta? <NuxtLink to="/login">Faça o login</NuxtLink></p>
           </div>
@@ -80,6 +86,7 @@ definePageMeta({
 const form = reactive({
   nomeCompleto: '',
   email: '',
+  telefone: '',
   senha: '',
   confirmarSenha: '',
   cep: '',
@@ -89,12 +96,26 @@ const form = reactive({
   complemento: ''
 });
 
-const handleRegister = () => {
+
+const handleRegister = async () => {
+  // Validação se as senhas coincidem
   if (form.senha !== form.confirmarSenha) {
     alert('As senhas não coincidem. Por favor, verifique.');
+    return; // Interrompe a função
+  }
+
+  // Validação simples de tamanho da senha
+  if (form.senha.length < 8) {
+    alert('A senha deve ter no mínimo 8 caracteres.');
     return;
   }
-  console.log('Tentativa de cadastro com os seguintes dados:', form);
-  alert('Cadastro enviado! (Verifique o console para ver os dados)');
+
+  console.log('Dados do formulário válidos, pronto para enviar ao back-end:', form);
+
+  await navigateTo('/configurar-alertas');
 };
 </script>
+
+<style scoped>
+
+</style>
