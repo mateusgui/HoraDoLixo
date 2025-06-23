@@ -73,6 +73,10 @@
 <script setup>
 import { reactive } from 'vue';
 
+definePageMeta({
+  layout: false,
+});
+
 const form = reactive({
   nomeCompleto: '',
   email: '',

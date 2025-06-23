@@ -386,3 +386,39 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* ==========================================================================
+   7. ESTILOS DA PÁGINA HOME / PAINEL
+   ========================================================================== */
+
+.dashboard-container {
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.schedule-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.alert-status {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.alert-status .status-inactive {
+  color: #888;
+  font-style: italic;
+}
+
+.map-button-container {
+  margin-top: 50px;
+}

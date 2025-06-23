@@ -35,6 +35,10 @@
 <script setup>
 import { ref } from 'vue';
 
+definePageMeta({
+  layout: false,
+});
+
 const email = ref('');
 
 // Função que será chamada quando o formulário for enviado

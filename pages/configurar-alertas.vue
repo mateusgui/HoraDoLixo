@@ -58,6 +58,10 @@
 <script setup>
 import { reactive } from 'vue';
 
+definePageMeta({
+  layout: false,
+});
+
 const coletaComum = reactive({
   zona: 'REGIÃO 02',
   dias: 'Segundas, Quartas e Sextas-feiras',
