@@ -71,7 +71,7 @@ const coletaComum = reactive({
 const coletaSeletiva = reactive({
   zona: 'coleta_seletiva_12',
   dias: 'Sextas-feiras',
-  horario: '18:00' // Período noturno
+  horario: '18:00'
 });
 
 const alertaComum = reactive({
@@ -84,12 +84,15 @@ const alertaSeletiva = reactive({
   horario: '17:00'
 });
 
-
-const finalizarCadastro = () => {
+const finalizarCadastro = async () => {
   console.log('Cadastro finalizado com as seguintes preferências de alerta:');
   console.log('Alerta Comum:', alertaComum);
   console.log('Alerta Seletiva:', alertaSeletiva);
-  alert('Cadastro e configuração de alertas concluídos! (Verifique o console)');
+  
+  // Chamada para a API para salvar tudo no BD
+  
+  // Após salvar, redireciona para a home.
+  await navigateTo('/home');
 };
 
 </script>
