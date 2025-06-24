@@ -3,7 +3,7 @@
     <div class="header-container">
       <div class="header-logo-container">
         <NuxtLink to="/home">
-          <img src="/img/IconeHoraDoLixo.png" alt="Ícone Hora do Lixo" class="header-logo-img">
+          <img src="/img/LogoHeader.png" alt="Ícone Hora do Lixo" class="header-logo-img">
         </NuxtLink>
       </div>
       <nav class="main-nav">
