@@ -17,24 +17,19 @@
 </template>
 
 <script setup>
-// Função de logout adicionada
-const logout = async () => {
-  // 1. Pede confirmação ao usuário para evitar cliques acidentais
-  const confirmed = confirm('Você tem certeza que deseja sair?');
 
-  // 2. Se o usuário confirmar, executa a lógica de logout
+const logout = async () => {
+  const confirmed = confirm('Você tem certeza que deseja sair?');
   if (confirmed) {
-    // No futuro, aqui você limparia os dados de autenticação do usuário (ex: token)
+    // Limpar os dados do usuário
     console.log('Usuário deslogado. Redirecionando para o login...');
 
-    // 3. Redireciona o usuário para a página de login
     await navigateTo('/login');
   }
 };
 </script>
 
 <style scoped>
-/* Os seus estilos continuam os mesmos e já se aplicam ao novo link */
 .main-header {
   background-color: #3149BC;
   padding: 15px 30px;
@@ -64,7 +59,7 @@ const logout = async () => {
   padding: 5px 0;
   border-bottom: 2px solid transparent;
   transition: border-color 0.3s ease;
-  cursor: pointer; /* Adicionado para o link de Sair parecer clicável */
+  cursor: pointer;
 }
 .nav-link:hover {
   border-bottom-color: rgba(255, 255, 255, 0.7);
