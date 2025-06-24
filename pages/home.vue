@@ -44,8 +44,7 @@
 <script setup>
 import { reactive } from 'vue';
 
-// --- SIMULAÇÃO DE DADOS ---
-// Dados que virão do backend
+// Simulação de dados que virão do backend
 const coletaComum = reactive({
   zona: 'REGIÃO 02',
   dias: 'Segundas, Quartas e Sextas-feiras',

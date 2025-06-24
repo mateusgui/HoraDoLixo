@@ -41,28 +41,24 @@ definePageMeta({
 
 const email = ref('');
 
-// Função que será chamada quando o formulário for enviado
-const handlePasswordResetRequest = () => {
+const handlePasswordResetRequest = async () => {
   if (!email.value) {
     alert('Por favor, digite seu e-mail.');
     return;
   }
 
-  // --- Lógica de Placeholder (simulação) ---
-  // No futuro, aqui você fará a chamada para a API do seu back-end .NET
+  // chamada para a API
   console.log('Solicitação de recuperação de senha para o e-mail:', email.value);
 
   alert('Se este e-mail estiver cadastrado, você receberá um link para redefinir sua senha em breve.');
 
-  // Opcional: redirecionar o usuário para a página de login após a solicitação
-  // navigateTo('/login');
+  await navigateTo('/login');
 };
 </script>
 
 <style scoped>
-/* Estilos específicos para esta página */
+
 .form-card {
-  /* A maior parte dos estilos vem do main.css, aqui ajustamos o que for preciso */
   text-align: center;
 }
 
