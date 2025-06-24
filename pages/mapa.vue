@@ -35,10 +35,8 @@
 <script setup>
 import { ref, computed } from 'vue';
 
-// Variável reativa para controlar qual mapa está ativo ('comum' ou 'seletiva')
-const mapaAtivo = ref('comum'); // Começa mostrando o mapa da coleta comum
+const mapaAtivo = ref('comum');
 
-// URL do mapa a ser exibido no iframe, calculada com base no mapaAtivo
 const urlDoMapa = computed(() => {
   if (mapaAtivo.value === 'comum') {
     return '/mapa_regioes_coleta_comum.html';
@@ -47,14 +45,13 @@ const urlDoMapa = computed(() => {
   }
 });
 
-// Função para mudar o mapa ativo ao clicar nos botões
 const mostrarMapa = (tipo) => {
   mapaAtivo.value = tipo;
 };
 </script>
 
 <style scoped>
-/* Estilos específicos para a página de mapa */
+
 .map-page-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -86,7 +83,7 @@ const mostrarMapa = (tipo) => {
   font-size: 1rem;
   font-weight: 600;
   border: 2px solid #3149BC;
-  border-radius: 50px; /* Deixa o botão arredondado */
+  border-radius: 50px;
   cursor: pointer;
   background-color: #fff;
   color: #3149BC;
@@ -97,7 +94,6 @@ const mostrarMapa = (tipo) => {
   background-color: #f0f2f5;
 }
 
-/* Estilo do botão ATIVO */
 .toggle-button.active {
   background-color: #3149BC;
   color: #fff;
@@ -105,10 +101,9 @@ const mostrarMapa = (tipo) => {
 
 .map-iframe-container {
   width: 100%;
-  /* Define uma proporção para o iframe ser responsivo */
   aspect-ratio: 16 / 10; 
   border-radius: 12px;
-  overflow: hidden; /* Garante que o iframe respeite as bordas arredondadas */
+  overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
