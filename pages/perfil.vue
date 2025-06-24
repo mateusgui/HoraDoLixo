@@ -108,10 +108,9 @@
 <script setup>
 import { reactive, ref, computed } from 'vue';
 
-// Variável para controlar o modo (visualização ou edição)
 const isEditing = ref(false);
 
-// --- SIMULAÇÃO DE DADOS ---
+// SIMULAÇÃO DE DADOS
 const usuario = reactive({
   nomeCompleto: 'Mateus Guimarães Moraes Vilela',
   email: 'mateus.vilela@exemplo.com',
@@ -135,7 +134,6 @@ const coletaSeletiva = reactive({
 
 const alertaComum = reactive({ ativo: true, horario: '18:00' });
 const alertaSeletiva = reactive({ ativo: false, horario: '17:00' });
-// -----------------------------
 
 // Guarda uma cópia dos dados originais para o "cancelar"
 let dadosOriginais = {};
@@ -164,7 +162,6 @@ const cancelarEdicao = () => {
 };
 
 const salvarAlteracoes = () => {
-  // Futuramente, aqui você chamaria a API para salvar os dados
   console.log('Salvando dados do usuário:', usuario);
   console.log('Salvando configuração de alertas:', { comum: alertaComum, seletiva: alertaSeletiva });
   alert('Alterações salvas com sucesso!');
@@ -173,12 +170,11 @@ const salvarAlteracoes = () => {
 </script>
 
 <style scoped>
-/* ESTILOS EXCLUSIVOS E ISOLADOS PARA A PÁGINA DE PERFIL */
 
 .page-container-profile {
   padding: 40px 20px;
   background-color: #f0f2f5;
-  min-height: calc(100vh - 72px); /* Altura da tela menos o header */
+  min-height: calc(100vh - 72px);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -189,7 +185,7 @@ const salvarAlteracoes = () => {
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 900px; /* Um pouco mais largo para os cards lado a lado */
+  max-width: 900px;
   padding: 40px;
   box-sizing: border-box;
 }
@@ -232,8 +228,6 @@ const salvarAlteracoes = () => {
 .address-inputs .input-group-profile:last-child { margin-bottom: 0; }
 .address-inputs .input-group-profile label { font-size: 0.9rem; color: #555; }
 
-
-/* Estilos para os cards de coleta dentro do perfil */
 .schedule-cards-container-profile {
   display: flex;
   justify-content: center;
@@ -257,8 +251,6 @@ const salvarAlteracoes = () => {
 .alert-config-box { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; }
 .time-config { margin-top: 10px; }
 
-
-/* Botões */
 .actions-container {
   margin-top: 30px;
   text-align: right;
@@ -297,7 +289,7 @@ const salvarAlteracoes = () => {
 .btn-secondary-profile:hover {
   background-color: #e2e6ea;
 }
-/* Estilo do Toggle Switch */
+
 .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
 .switch input { opacity: 0; width: 0; height: 0; }
 .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
