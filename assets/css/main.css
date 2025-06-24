@@ -422,3 +422,7 @@ input:checked + .slider:before {
 .map-button-container {
   margin-top: 50px;
 }
+
+.home-page-layout {
+  align-items: flex-start;
+}

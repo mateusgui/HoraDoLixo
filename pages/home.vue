@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div class="page-container home-page-layout">
     <div class="dashboard-container">
 
       <div class="schedule-cards-container">
