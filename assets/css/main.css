@@ -395,7 +395,7 @@ input:checked + .slider:before {
   width: 100%;
   max-width: 1000px;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .schedule-cards-container {
@@ -430,4 +430,80 @@ input:checked + .slider:before {
 a.btn-primary,
 a.btn-primary:hover {
   text-decoration: none;
+}
+
+/* ==========================================================================
+   8. SEÇÃO DE GRADE DE SERVIÇOS (PÁGINA HOME)
+   ========================================================================== */
+
+.services-grid-section {
+  margin-top: 25px; /* Espaço acima da seção */
+  border-top: 1px solid #e0e0e0;
+  padding-top: 15px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.services-grid {
+  display: grid;
+  /* Por padrão (desktop), 3 colunas */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 25px; /* Espaço entre os cards */
+}
+
+.service-card {
+  display: block;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card img {
+  width: 100%;
+  height: 180px; /* Altura fixa para as imagens */
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+  display: block;
+}
+
+.service-card-title {
+  padding: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Responsividade da Grade de Serviços --- */
+
+/* Para telas intermediárias (tablets) - 2 colunas */
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Para telas pequenas (celulares) - 1 coluna */
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-grid-section {
+    margin-top: 40px;
+  }
 }
