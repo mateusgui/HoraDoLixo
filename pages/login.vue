@@ -49,7 +49,16 @@ definePageMeta({
 const email = ref('');
 const password = ref('');
 
-const handleLogin = () => {
+const handleLogin = async () => {
   console.log('Tentativa de login com:', { email: email.value, password: password.value });
+
+  // Verifica se o e-mail e a senha correspondem aos valores chumbados para teste
+  if (email.value === 'mateus_g@ufms.br' && password.value === 'Senha123@') {
+    
+    await navigateTo('/home');
+
+  } else {
+    alert('E-mail ou senha incorretos. Tente novamente.');
+  }
 };
 </script>
