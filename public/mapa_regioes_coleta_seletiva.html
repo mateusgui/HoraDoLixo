@@ -26,7 +26,7 @@
         .leaflet-popup-content {
             margin: 10px;
         }
-        .leaflet-popup-content h<strong></strong>strong {
+        .leaflet-popup-content {
             font-size: 1.1em;
             margin-bottom: 5px;
         }
@@ -37,7 +37,6 @@
 <div id="map"></div>
 
 <script>
-    // Dados JSON fornecidos (incorporados diretamente)
     const jsonData = [
       {
         "name": "coleta_seletiva_1",
@@ -266,15 +265,12 @@
       }
     ];
 
-    // Inicializa o mapa - Centralizado na primeira coordenada do primeiro polígono
-    // Latitude: -20.456911, Longitude: -54.6222424
     var map = L.map('map').setView([-20.47, -54.60], 12); // Ajuste o zoom (terceiro parâmetro) conforme necessário
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Função para gerar uma cor aleatória (para diferenciar os polígonos)
     function getRandomColor() {
         var letters = '0123456789ABCDEF';
         var color = '#';
@@ -284,44 +280,37 @@
         return color;
     }
 
-    // Processa cada item do JSON para criar os polígonos
     jsonData.forEach(function(area) {
         const coordinateString = area.coordinates;
-        // Remove espaços em branco do início/fim e depois divide por nova linha
+
         const lines = coordinateString.trim().split('\n'); 
         
         const latLngs = lines.map(line => {
-            // Remove espaços em branco de cada linha de coordenada e divide por vírgula
+
             const parts = line.trim().split(',');
-            // Leaflet espera [latitude, longitude]
-            // O terceiro valor (altitude) é ignorado aqui
+
             return [parseFloat(parts[1]), parseFloat(parts[0])];
         });
 
-        // Cria o polígono
         const polygon = L.polygon(latLngs, { 
-            color: getRandomColor(), // Define uma cor aleatória para a borda
-            weight: 2, // Espessura da borda
-            fillOpacity: 0.3 // Opacidade do preenchimento
+            color: getRandomColor(),
+            weight: 2,
+            fillOpacity: 0.3
         }).addTo(map);
 
-        // Adiciona um popup com o nome e a descrição da área
         polygon.bindPopup("<strong>" + area.name + "</strong><br>" + area.description);
     });
 
-    // Opcional: Ajustar o mapa para mostrar todos os polígonos carregados
     if (jsonData.length > 0 && jsonData[0].coordinates) {
         const firstAreaCoords = jsonData[0].coordinates.trim().split('\n').map(line => {
             const parts = line.trim().split(',');
             return [parseFloat(parts[1]), parseFloat(parts[0])];
         });
         if (firstAreaCoords.length > 0) {
-            // Cria um grupo de layers para calcular os limites
             var group = L.featureGroup(map.getLayers().filter(layer => layer instanceof L.Polygon));
-            if (Object.keys(group._layers).length > 0) { // Verifica se há polígonos no grupo
-                 map.fitBounds(group.getBounds().pad(0.1)); // pad adiciona uma pequena margem
+            if (Object.keys(group._layers).length > 0) {
+                 map.fitBounds(group.getBounds().pad(0.1));
             } else {
-                 // Se não houver polígonos, centraliza no primeiro ponto do primeiro polígono (fallback)
                  map.setView(firstAreaCoords[0], 13);
             }
         }
