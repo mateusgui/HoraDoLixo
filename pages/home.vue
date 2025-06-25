@@ -88,7 +88,7 @@ const servicos = ref([
   { imagem: 'limpeza_apos_feira.jpg', titulo: 'Limpeza de vias após as feiras', link: 'https://solurb.eco.br/servico/limpeza-de-vias-apos-as-feiras-livres/14' },
   { imagem: 'limpeza_boca_lobo.jpg', titulo: 'Limpeza manual de boca de lobo', link: 'https://solurb.eco.br/servico/limpeza-manual-de-boca-de-lobo/12' },
   { imagem: 'pintura_meio_fio.jpg', titulo: 'Pintura de meio fio', link: 'https://solurb.eco.br/servico/pintura-de-meio-fio/15' },
-  { imagem: 'solicite_palestra.jpg', titulo: 'Solicite uma palestra', link: 'https://solurb.eco.br/palestras' },
+  { imagem: 'solicite_palestra.JPG', titulo: 'Solicite uma palestra', link: 'https://solurb.eco.br/palestras' },
   { imagem: 'varricao_vias.jpg', titulo: 'Varrição de Vias e Logradouros', link: 'https://solurb.eco.br/servico/varricao-de-vias-e-logradouros-publicos/19' }
 ]);
 </script>
