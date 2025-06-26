@@ -53,6 +53,8 @@ const isLoading = ref(false);
 
 const config = useRuntimeConfig();
 
+console.log('Valor lido da variável de ambiente:', config.public.apiBaseUrl);
+
 const handleLogin = async () => {
   errorMessage.value = '';
   isLoading.value = true;
