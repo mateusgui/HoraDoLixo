@@ -48,17 +48,39 @@ definePageMeta({
 
 const email = ref('');
 const password = ref('');
+const errorMessage = ref('');
+const isLoading = ref(false);
+
+const config = useRuntimeConfig();
 
 const handleLogin = async () => {
-  console.log('Tentativa de login com:', { email: email.value, password: password.value });
+  errorMessage.value = '';
+  isLoading.value = true;
 
-  // Verifica se o e-mail e a senha correspondem aos valores chumbados para teste
-  if (email.value === 'mateus_g@ufms.br' && password.value === 'Senha123@') {
+  const apiUrl = `${config.public.apiBaseUrl}/Usuario/login`;
+
+  try {
+    const responseData = await $fetch(apiUrl, {
+      method: 'POST',
+      body: {
+        Email: email.value,
+        Senha: password.value,
+      },
+    });
+
+    console.log('Login bem-sucedido! Token recebido:', responseData.token);
     
     await navigateTo('/home');
 
-  } else {
-    alert('E-mail ou senha incorretos. Tente novamente.');
+  } catch (error) {
+    if (error.statusCode === 401 || error.statusCode === 400) {
+      errorMessage.value = 'E-mail ou senha incorretos.';
+    } else {
+      errorMessage.value = 'Ocorreu um erro no servidor. Tente novamente mais tarde.';
+    }
+    console.error('Erro ao fazer login:', error);
+  } finally {
+    isLoading.value = false;
   }
 };
 </script>
