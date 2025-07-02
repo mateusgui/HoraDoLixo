@@ -1,7 +1,6 @@
 <template>
   <div class="page-container">
     <div class="register-card">
-
       <div class="register-header">
         <NuxtLink to="/login">
           <img src="/img/IconeHoraDoLixo.png" alt="Ícone Hora do Lixo" class="header-logo">
@@ -9,7 +8,6 @@
         <h1>Crie sua Conta</h1>
         <p>Informe seus dados para começar a usar o serviço.</p>
       </div>
-
       <div class="register-form-section">
         <form @submit.prevent="handleRegister">
           <div class="form-columns-container">
@@ -18,25 +16,23 @@
                 <legend>Dados Pessoais</legend>
                 <div class="input-group">
                   <label for="nome">Nome Completo</label>
-                  <input type="text" id="nome" v-model="form.nomeCompleto" required>
+                  <input type="text" id="nome" v-model="registrationData.nomeCompleto" required>
                 </div>
                 <div class="input-group">
                   <label for="email">E-mail</label>
-                  <input type="email" id="email" v-model="form.email" required>
+                  <input type="email" id="email" v-model="registrationData.email" required>
                 </div>
-                
                 <div class="input-group">
                   <label for="telefone">Telefone</label>
-                  <input type="tel" id="telefone" v-model="form.telefone" placeholder="(00) 00000-0000" required>
+                  <input type="tel" id="telefone" v-model="registrationData.telefone" placeholder="(00) 00000-0000" required>
                 </div>
-
                 <div class="input-group">
                   <label for="senha">Senha</label>
-                  <input type="password" id="senha" v-model="form.senha" placeholder="Mínimo 8 caracteres" required>
+                  <input type="password" id="senha" v-model="registrationData.senha" placeholder="Mínimo 8 caracteres" required>
                 </div>
                 <div class="input-group">
                   <label for="confirmar-senha">Confirmar Senha</label>
-                  <input type="password" id="confirmar-senha" v-model="form.confirmarSenha" required>
+                  <input type="password" id="confirmar-senha" v-model="confirmarSenha" required>
                 </div>
               </fieldset>
             </div>
@@ -45,23 +41,23 @@
                 <legend>Endereço</legend>
                 <div class="input-group">
                   <label for="cep">CEP</label>
-                  <input type="text" id="cep" v-model="form.cep">
+                  <input type="text" id="cep" v-model="registrationData.cep">
                 </div>
                 <div class="input-group">
                   <label for="rua">Rua / Avenida</label>
-                  <input type="text" id="rua" v-model="form.rua" required>
+                  <input type="text" id="rua" v-model="registrationData.rua" required>
                 </div>
                 <div class="input-group">
                   <label for="numero">Número</label>
-                  <input type="text" id="numero" v-model="form.numero" required>
+                  <input type="text" id="numero" v-model="registrationData.numero" required>
                 </div>
                 <div class="input-group">
                   <label for="bairro">Bairro</label>
-                  <input type="text" id="bairro" v-model="form.bairro" required>
+                  <input type="text" id="bairro" v-model="registrationData.bairro" required>
                 </div>
                 <div class="input-group">
                   <label for="complemento">Complemento (Opcional)</label>
-                  <input type="text" id="complemento" v-model="form.complemento">
+                  <input type="text" id="complemento" v-model="registrationData.complemento">
                 </div>
               </fieldset>
             </div>
@@ -77,45 +73,29 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+
+import { useRegistrationData } from '~/composables/useRegistrationData';
+import { ref } from 'vue';
 
 definePageMeta({
   layout: false,
 });
 
-const form = reactive({
-  nomeCompleto: '',
-  email: '',
-  telefone: '',
-  senha: '',
-  confirmarSenha: '',
-  cep: '',
-  rua: '',
-  numero: '',
-  bairro: '',
-  complemento: ''
-});
+const registrationData = useRegistrationData();
 
+const confirmarSenha = ref('');
 
 const handleRegister = async () => {
-  // Validação se as senhas coincidem
-  if (form.senha !== form.confirmarSenha) {
+  if (registrationData.value.senha !== confirmarSenha.value) {
     alert('As senhas não coincidem. Por favor, verifique.');
-    return; // Interrompe a função
+    return;
   }
-
-  // Validação simples de tamanho da senha
-  if (form.senha.length < 8) {
+  if (registrationData.value.senha.length < 8) {
     alert('A senha deve ter no mínimo 8 caracteres.');
     return;
   }
 
-  console.log('Dados do formulário válidos, pronto para enviar ao back-end:', form);
-
+  console.log('Dados da primeira etapa salvos, redirecionando...', registrationData.value);
   await navigateTo('/configurar-alertas');
 };
 </script>
-
-<style scoped>
-
-</style>
