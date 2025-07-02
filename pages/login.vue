@@ -43,16 +43,18 @@
 import { ref } from 'vue';
 import { useAuthToken, useUser } from '~/composables/useAuth';
 
-definePageMeta({ layout: false });
+definePageMeta({
+  layout: false,
+});
 
 const email = ref('');
 const password = ref('');
 const errorMessage = ref('');
 const isLoading = ref(false);
 
-const config = useRuntimeConfig();
 const authToken = useAuthToken();
 const user = useUser();
+const config = useRuntimeConfig();
 
 const handleLogin = async () => {
   errorMessage.value = '';
@@ -60,10 +62,13 @@ const handleLogin = async () => {
 
   try {
     const apiUrl = `${config.public.apiBaseUrl}/Usuario/login`;
-    
+
     const responseData = await $fetch(apiUrl, {
       method: 'POST',
-      body: { Email: email.value, Senha: password.value },
+      body: {
+        Email: email.value,
+        Senha: password.value,
+      },
     });
 
     if (responseData && responseData.token && responseData.usuario) {
@@ -71,14 +76,15 @@ const handleLogin = async () => {
       
       authToken.value = responseData.token;
       user.value = responseData.usuario;
-      
+
       await navigateTo('/home');
+
     } else {
-      throw new Error("Resposta da API de login inválida.");
+      throw new Error("Resposta da API de login inválida ou incompleta.");
     }
 
   } catch (error) {
-    errorMessage.value = 'E-mail ou senha incorretos.';
+    errorMessage.value = 'E-mail ou senha incorretos. Por favor, tente novamente.';
     console.error('Erro ao fazer login:', error);
   } finally {
     isLoading.value = false;
