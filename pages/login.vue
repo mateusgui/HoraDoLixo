@@ -41,10 +41,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useAuthToken, useUser } from '~/composables/useAuth';
 
-definePageMeta({
-  layout: false,
-});
+definePageMeta({ layout: false });
 
 const email = ref('');
 const password = ref('');
@@ -52,34 +51,34 @@ const errorMessage = ref('');
 const isLoading = ref(false);
 
 const config = useRuntimeConfig();
-
-console.log('Valor lido da variável de ambiente:', config.public.apiBaseUrl);
+const authToken = useAuthToken();
+const user = useUser();
 
 const handleLogin = async () => {
   errorMessage.value = '';
   isLoading.value = true;
 
-  const apiUrl = `${config.public.apiBaseUrl}/Usuario/login`;
-
   try {
+    const apiUrl = `${config.public.apiBaseUrl}/Usuario/login`;
+    
     const responseData = await $fetch(apiUrl, {
       method: 'POST',
-      body: {
-        Email: email.value,
-        Senha: password.value,
-      },
+      body: { Email: email.value, Senha: password.value },
     });
 
-    console.log('Login bem-sucedido! Token recebido:', responseData.token);
-    
-    await navigateTo('/home');
+    if (responseData && responseData.token && responseData.usuario) {
+      console.log('Login bem-sucedido!');
+      
+      authToken.value = responseData.token;
+      user.value = responseData.usuario;
+      
+      await navigateTo('/home');
+    } else {
+      throw new Error("Resposta da API de login inválida.");
+    }
 
   } catch (error) {
-    if (error.statusCode === 401 || error.statusCode === 400) {
-      errorMessage.value = 'E-mail ou senha incorretos.';
-    } else {
-      errorMessage.value = 'Ocorreu um erro no servidor. Tente novamente mais tarde.';
-    }
+    errorMessage.value = 'E-mail ou senha incorretos.';
     console.error('Erro ao fazer login:', error);
   } finally {
     isLoading.value = false;
