@@ -159,8 +159,8 @@ const { data: initialData, pending, error, refresh } = await useAsyncData(
       return null;
     }
     
-    const userApiUrl = `${config.public.apiBaseUrl}/Usuario/${user.value.idUsuario}`;
-    const collectionApiUrl = `${config.public.apiBaseUrl}/Usuario/${user.value.idUsuario}/coleta`;
+    const userApiUrl = `${config.public.apiBaseUrl}/api/Usuario/${user.value.idUsuario}`;
+    const collectionApiUrl = `${config.public.apiBaseUrl}/api/Usuario/${user.value.idUsuario}/coleta`;
 
     try {
       const [userDataResponse, collectionDataResponse] = await Promise.all([
@@ -222,7 +222,7 @@ const salvarAlteracoes = async () => {
   if (!user.value) return;
   isSaving.value = true;
   saveError.value = '';
-  const apiUrl = `${config.public.apiBaseUrl}/Usuario/${user.value.idUsuario}`;
+  const apiUrl = `${config.public.apiBaseUrl}/api/Usuario/${user.value.idUsuario}`;
 
   // Monta o DTO com os dados do formulário, ESPELHANDO a classe UsuarioUpdateDto.cs
   const payload = {
