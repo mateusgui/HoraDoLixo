@@ -85,7 +85,7 @@ const finalizarCadastro = async () => {
   isLoading.value = true;
   errorMessage.value = '';
 
-  const apiUrl = `${config.public.apiBaseUrl}/Usuario`;
+  const apiUrl = `${config.public.apiBaseUrl}/api/Usuario`;
 
   const payload = {
     NomeCompleto: registrationData.value.nomeCompleto,
