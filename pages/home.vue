@@ -77,7 +77,7 @@ const { data: collectionInfo, pending, error: fetchError } = await useAsyncData(
       return null;
     }
     
-    const apiUrl = `${config.public.apiBaseUrl}/Usuario/${user.value.idUsuario}/coleta`;
+    const apiUrl = `${config.public.apiBaseUrl}/api/Usuario/${user.value.idUsuario}/coleta`;
     
     return await $fetch(apiUrl, {
       headers: {
