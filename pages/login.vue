@@ -61,7 +61,7 @@ const handleLogin = async () => {
   isLoading.value = true;
 
   try {
-    const apiUrl = `${config.public.apiBaseUrl}/Usuario/login`;
+    const apiUrl = `${config.public.apiBaseUrl}/api/Usuario/login`;
 
     const responseData = await $fetch(apiUrl, {
       method: 'POST',
